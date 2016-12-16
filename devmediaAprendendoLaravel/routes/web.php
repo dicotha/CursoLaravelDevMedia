@@ -31,3 +31,4 @@ Route::post('/telefoneSalvar/{id}', ['uses'=>'TelefoneController@salvar','as'=>'
 Route::get('/telefonedeletar/{id}', ['uses'=>'TelefoneController@deletar','as'=>'telefones.deletar']);
 Route::get('/telefoneeditar/{id}', ['uses'=>'TelefoneController@editar','as'=>'telefones.editar']);
 Route::put('/telefoneatualizar/{id}', ['uses'=>'TelefoneController@atualizar','as'=>'telefones.atualizar']);
+

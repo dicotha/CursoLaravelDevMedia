@@ -17,7 +17,7 @@
                     {{ csrf_field() }}
                     <div class="form-group {{ $errors->has('titulo')?'has-error':'false'}}">
                         <label for="titulo">Titulo do telefone</label>
-                        <input type="text" name="titulo" class="form-control" placeholder="Titulo">
+                        <input type="text" name="titulo" class="form-control" placeholder="Titulo" value="{{old('titulo')}}">
                         @if($errors->has('titulo'))
                             <span class="help-block">
                                 <strong>{{$errors->first('titulo')}}</strong>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('telefone')?'has-error':'false'}}">
                         <label for="telefone">Telefone</label>
-                        <input type="text" name="telefone" class="form-control" placeholder="Telefone">
+                        <input type="text" name="telefone" class="form-control" placeholder="Telefone" value="{{old('telefone')}}">
                         @if($errors->has('telefone'))
                             <span class="help-block">
                                 <strong>{{$errors->first('telefone')}}</strong>

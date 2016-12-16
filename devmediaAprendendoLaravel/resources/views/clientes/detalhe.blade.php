@@ -32,7 +32,7 @@
                                 <td>{{ $tel->telefone }}</td>
                                 <td>
                                     <a href="{{route('telefones.editar',$tel->id)}}" class="btn btn-default">Editar</a>
-                                    <a href="javascript:(confirm('deletar esse registro') ? window.location.href='{{route('telefones.deletar',$tel->id)}}' :false)" class="btn btn-danger">Deletar</a>
+                                    <a href="{{route('telefones.deletar',$tel->id)}}" class="btn btn-danger">Deletar</a>
                                 </td>
                            </tr>
                            @endforeach
@@ -51,4 +51,25 @@
         </div>
     </div>
 </div>
+<script>
+      @if(Session::has('notifica'))
+      //alert("{{ Session::get('notifica.alert-type') }}");
+        var type = "{{ Session::get('notifica.alert-type', 'info') }}";
+        switch(type){
+            case 'info':
+                toastr.info("{{ Session::get('notifica.message') }}");
+                break;
+            
+            case 'warning':
+                toastr.warning("{{ Session::get('notifica.message') }}");
+                break;
+            case 'success':
+                toastr.success("{{ Session::get('notifica.message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('notifica.message') }}");
+                break;
+        }
+      @endif
+    </script>
 @endsection

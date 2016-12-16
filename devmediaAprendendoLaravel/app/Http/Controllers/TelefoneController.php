@@ -24,10 +24,11 @@ class TelefoneController extends Controller
     	$telefone->titulo = $request->input('titulo');
     	$telefone->telefone = $request->input('telefone');
 		\App\Cliente::find($id)->addTelefone($telefone);
-		\Session::flash('flash_message',[
-            'msg'=>'Telefone Adicionado com Sucesso',
-            'class'=>'alert-success'
-        ]);
+		$notification = array(
+            'message' => 'Telefone Salvo Com Sucesso', 
+            'alert-type' => 'success'
+        );
+        session()->set('notifica',$notification);
         return redirect()->route('clientes.detalhe',$id);
     }
 
@@ -35,10 +36,11 @@ class TelefoneController extends Controller
     public function editar($id){
         $telefone=\App\Telefone::find($id);
             if(!$telefone){
-             \Session::flash('flash_message',[
-                'msg'=>'Telefone não encontrado',
-                'class'=>'alert-danger'
-            ]);
+             $notification = array(
+                'message' => 'Telefone Não Existe', 
+                'alert-type' => 'warning'
+            );
+            session()->set('notifica',$notification);
             return redirect()->route('clientes.detalhe',$telefone->cliente->id);
         }
         return view('telefones.editar', compact('telefone'));
@@ -49,22 +51,46 @@ class TelefoneController extends Controller
     public function atualizar(TelefoneRequest $request, $id){
     	$telefone=\App\Telefone::find($id);
         \App\Telefone::find($id)->update($request->all());
-        \Session::flash('flash_message',[
+
+        $notification = array(
+            'message' => 'Telefone atualizado', 
+            'alert-type' => 'success'
+        );
+        session()->set('notifica',$notification);
+
+        /*\Session::flash('flash_message',[
                 'msg'=>'Telefone atualizado',
                 'class'=>'alert-success'
-        ]);
+        ]);*/
         return redirect()->route('clientes.detalhe',$telefone->cliente->id);
     }
 
 
-    // botao deletar cliente
+    // botao deletar telefone
     public function deletar($id){
         $telefone = \App\Telefone::find($id);
         $telefone->delete();
-        \Session::flash('flash_message',[
+        /*\Session::flash('flash_message',[
                 'msg'=>'telefone deletado com sucesso',
                 'class'=>'alert-success'
-        ]);
+        ]);*/
+        $notification = array(
+            'message' => 'Telefone deletado com sucesso', 
+            'alert-type' => 'error',
+
+        );
+        \Session::set('notifica',$notification);
         return redirect()->route('clientes.detalhe',$telefone->cliente->id);
     }
+
+    /*notificacao ToaStr
+    public function notifica(){
+        $notification = array(
+            'message' => 'Thanks! We shall get back to you soon.', 
+            'alert-type' => 'success'
+        );
+        session()->set('notification',$notification);
+        return view('notification');
+    
+    }*/
 }
