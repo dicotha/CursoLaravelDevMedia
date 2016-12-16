@@ -1,4 +1,4 @@
-# Laravel PHP Framework
+# Laravel PHP Framework - Curso Devmedia
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -10,7 +10,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
+## Documentação do Projeto feito no Curso
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
